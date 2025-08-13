@@ -1,3 +1,4 @@
+const fs = require('fs');
 exports.config = {
     //
     // ====================
@@ -50,10 +51,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            args: ['headless', 'disable-gpu']
-        }
+        browserName: 'chrome'
     }],
 
     //
@@ -126,12 +124,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['junit',{
-        outputDir: './reports/e2e-report/',
-        outputFileFormat: function(options) {
-            return 'junit-report.xml'
-        }
-    }]],
+    reporters: [['allure', {
+     outputDir: 'allure-results',
+     disableWebdriverStepsReporting: true,
+     disableWebdriverScreenshotsReporting: false,
+     }]],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -205,8 +202,11 @@ exports.config = {
      * Hook that gets executed before the suite starts
      * @param {object} suite suite details
      */
-    // beforeSuite: function (suite) {
-    // },
+    beforeSuite: function (suite) {
+   if(fs.existsSync('./reports/errorShots')){
+      fs.rmdirSync('./reports/errorShots', { recursive: true })
+   }
+},
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
@@ -234,8 +234,12 @@ exports.config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+       if(!passed) {
+           fs.mkdirSync('./reports/errorShots', { recursive: true })
+           await browser.saveScreenshot(`./reports/errorShots/${test.title}.png`)
+       }
+   },
 
 
     /**
