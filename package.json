@@ -4,15 +4,14 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^15.0.7",
+    "@testing-library/react": "^15.0.5",
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.8",
     "babel-jest": "^29.7.0",
     "bootstrap-icons": "^1.11.3",
     "http-proxy-middleware": "^3.0.0",
-    "jest": "^29.7.0",
     "jest-junit": "^16.0.0",
-    "nock": "^13.5.6",
+    "nock": "^13.5.4",
     "react": "^18.3.1",
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.3.1",
@@ -37,7 +36,7 @@
     ]
   },
   "jest-junit": {
-    "outputDirectory": "unit-reports/junit",
+    "outputDirectory": "reports/junit",
     "outputName": "junit.xml"
   },
   "eslintConfig": {
@@ -61,12 +60,12 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/register": "^7.23.7",
-    "@wdio/allure-reporter": "^8.43.0",
-    "@wdio/cli": "^9.18.4",
-    "@wdio/junit-reporter": "^9.18.0",
-    "@wdio/local-runner": "^9.18.4",
-    "@wdio/mocha-framework": "^9.18.0",
-    "@wdio/visual-service": "^6.4.0",
+    "@wdio/allure-reporter": "^8.36.1",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/globals": "^9.17.0",
+    "@wdio/junit-reporter": "^8.36.1",
+    "@wdio/local-runner": "^8.36.1",
+    "@wdio/mocha-framework": "^8.36.1",
     "concurrently": "^8.2.2",
     "wdio-wait-for": "^3.0.11"
   }

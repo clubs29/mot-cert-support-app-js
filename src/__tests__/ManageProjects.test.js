@@ -79,7 +79,7 @@ describe('ManageProjects', () => {
             <ManageProjects />
         </MemoryRouter>);
 
-        await findByText('Project 2');
+        await findByText('Project 1');
 
         await fireEvent.change(getByTestId("project-name"), {target: {value: "Project 3"}});
         await fireEvent.change(getByTestId("project-description"), {target: {value: "This is the third project"}});
