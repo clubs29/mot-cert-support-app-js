@@ -25,7 +25,7 @@ describe('ProjectList', () => {
             <ProjectList />
         </MemoryRouter>);
         
-        await findByText('Project 1');
+        await findByText('Project 2');
 
        expect(asFragment()).toMatchSnapshot();
     });
