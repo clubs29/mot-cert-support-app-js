@@ -10,6 +10,7 @@ describe('My Login application', () => {
 
         await browser.url(`http://localhost:3000/#/login`)
 
+     
         await LoginPage.emailInput.setValue(credentials.email)
         await LoginPage.passwordInput.setValue(credentials.password)
         await LoginPage.loginButton.click()

@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+ app:
+   image: ministryoftesting/support-app-js:latest
+   build:
+     context: .
+     dockerfile: Dockerfile
+   ports:
+     - "3000:3000"
+     - "8080:8080"
+   volumes:
+     - ./mocks/mappings:/usr/local/mocks/mappings
